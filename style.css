@@ -6,3 +6,13 @@ html, body {
 canvas {
   display: block;
 }
+
+footer {
+font-family: poppins;
+font-weight: medium;
+font-size: 22px;
+padding: 20px;
+color: aliceblue;
+background-color: rgba(79, 105, 157, 0.88);
+text-align: center;
+}
