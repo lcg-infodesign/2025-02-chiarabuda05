@@ -112,11 +112,11 @@ function drawPlantGlyph(x, y, baseSize, plantScale, stemRatio, fColor, leaves, p
   scale(plantScale); // Applica la scala generale (column4)
 
   let size = baseSize;
-  let stemHeight = size * stemRatio; // Altezza dinamica (column0)
+  
   let stemWidth = 2;
   // Coordinate del centro del fiore
   let flowerCenterX = 0;
-  let flowerCenterY = size / 2 - stemHeight;
+  let flowerCenterY = size / 2;
 
   let leafLength = size * 0.3; 
   let leafAngle = 30; // Angolo di inclinazione minore (più verso l'alto)
@@ -131,7 +131,7 @@ function drawPlantGlyph(x, y, baseSize, plantScale, stemRatio, fColor, leaves, p
   noStroke();
   fill(fColor); // Colore dinamico 
 
-  let flowerRadius = size * 0.18;
+  let flowerRadius = size * 0.13;
   
   // Disegna i petali (column3)
   let angleStep = -360 / petals;
