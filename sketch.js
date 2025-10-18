@@ -67,11 +67,18 @@ function setup() {
     let yPos = outerPadding + rowCount * (itemBaseSize + padding) + itemBaseSize / 2;
 // Mappatura: Column1 -> Colore del fiore (Rosso o Giallo - Discreto/Pari-Dispari)
     let flowerColor;
-    if (int(params["column1"]) % 2 === 0) { // Se è PARI
-        flowerColor = color("#5688"); // Rosso
-    } else { // Se è DISPARI
-        flowerColor = color("rgba(51, 119, 153, 0.6)"); // Giallo
-    }
+    let v1 = int(params["column1"]); // Prendi il valore come intero
+
+if (v1 % 5 === 0) {
+    // 1. Multiplo di 5 (ha la priorità)
+    flowerColor = color("rgba(79, 157, 87, 0.69)"); // Verde
+} else if (v1 % 2 === 0) {
+    // 2. Multiplo di 2 (PARI)
+    flowerColor = color("rgba(79, 105, 157, 0.88)"); // Blu
+} else {
+    // 3. Altro (DISPARI e non multiplo di 5)
+    flowerColor = color("rgba(218, 145, 171, 0.9)"); // Rosa
+}
     // Disegna il glifo
     drawPlantGlyph(xPos, yPos, itemBaseSize, plantScale, stemHeightRatio, flowerColor, numLeaves, numPetals);
 
@@ -106,29 +113,28 @@ function drawPlantGlyph(x, y, baseSize, plantScale, stemRatio, fColor, leaves, p
 
   let size = baseSize;
   let stemHeight = size * stemRatio; // Altezza dinamica (column0)
-  let stemWidth = 4;
-  let leafLength = size * 0.3; 
-  let leafAngle = 30; // Angolo di inclinazione minore (più verso l'alto)
-  let leafControlOffset = leafLength * 0.1; // Controlli più vicini per forma slanciati
-  
+  let stemWidth = 2;
   // Coordinate del centro del fiore
   let flowerCenterX = 0;
   let flowerCenterY = size / 2 - stemHeight;
 
-
-  // 1. GAMBO 
-  stroke(70, 100, 40,); 
-  strokeWeight(stemWidth);
-  line(0, size / 2.5, 0, flowerCenterY); // Il gambo termina al centro del fiore
+  let leafLength = size * 0.3; 
+  let leafAngle = 30; // Angolo di inclinazione minore (più verso l'alto)
+  let leafControlOffset = leafLength * 0.1; // Controlli più vicini per forma slanciati
   
+
+  
+
+   
   
   // 3. FIORE/CIMA (dipende da column1 e column3)
   noStroke();
-  fill(fColor); // Colore dinamico (Rosso o Giallo)
-  let flowerRadius = size * 0.12;
+  fill(fColor); // Colore dinamico 
+
+  let flowerRadius = size * 0.18;
   
   // Disegna i petali (column3)
-  let angleStep = 360 / petals;
+  let angleStep = -360 / petals;
 
   for (let i = 0; i < petals; i++) {
     push();
@@ -141,6 +147,7 @@ function drawPlantGlyph(x, y, baseSize, plantScale, stemRatio, fColor, leaves, p
     // 3.  petalo
     
     ellipse(0, -flowerRadius * 1.5, flowerRadius * 0.7, flowerRadius * 2);
+    
 
     pop();
   }
