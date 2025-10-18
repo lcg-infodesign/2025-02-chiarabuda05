@@ -117,7 +117,7 @@ function drawPlantGlyph(x, y, baseSize, plantScale, stemRatio, fColor, leaves, p
 
 
   // 1. GAMBO 
-  stroke(0, 100, 40,200); 
+  stroke(70, 100, 40,); 
   strokeWeight(stemWidth);
   line(0, size / 2.5, 0, flowerCenterY); // Il gambo termina al centro del fiore
   
@@ -138,10 +138,8 @@ function drawPlantGlyph(x, y, baseSize, plantScale, stemRatio, fColor, leaves, p
     // 2. RUOTA in base al passo angolare
     rotate(radians(angleStep * i)); 
 
-    // 3. Disegna il petalo
-    // Il petalo viene disegnato con il centro vicino all'origine (0,0)
-    // E si estende sull'asse Y negativa (verso l'alto), in modo che
-    // la rotazione lo orienti correttamente verso l'esterno.
+    // 3.  petalo
+    
     ellipse(0, -flowerRadius * 1.5, flowerRadius * 0.7, flowerRadius * 2);
 
     pop();
